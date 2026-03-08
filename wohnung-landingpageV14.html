@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-Zimmer-Wohnung in Unterföhring | 57m² | Frei ab 01. Mai 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --primary-light: #34495e;
+            --accent: #c9a962;
+            --accent-light: #d4b878;
+            --highlight-orange: #e67e22;
+            --cream: #f8f6f3;
+            --cream-dark: #f0ede8;
+            --text: #333;
+            --text-light: #666;
+            --white: #fff;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
+            --transition: all 0.3s ease;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Source Sans 3', sans-serif; color: var(--text); background: var(--cream); line-height: 1.6; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 500; letter-spacing: -0.02em; }
+        header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); box-shadow: 0 1px 0 rgba(0,0,0,0.05); transition: var(--transition); }
+        nav { max-width: 1400px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--primary); font-weight: 600; }
+        .header-status { background: var(--highlight-orange); color: var(--white); padding: 0.6rem 1.2rem; border-radius: 4px; font-weight: 800; font-size: 1rem; box-shadow: 0 2px 10px rgba(230,126,34,0.3); text-transform: uppercase; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+        .nav-links a { color: var(--text); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: var(--transition); position: relative; }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--accent); transition: var(--transition); }
+        .nav-links a:hover::after { width: 100%; }
+        .hero { position: relative; height: 85vh; min-height: 600px; overflow: hidden; margin-top: 60px; }
+        .hero-slider { position: relative; height: 100%; width: 100%; }
+        .hero-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease; }
+        .hero-slide.active { opacity: 1; }
+        .hero-slide img { width: 100%; height: 100%; object-fit: cover; }
+        .hero-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 4rem 2rem 3rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 60%, transparent 100%); color: var(--white); }
+        .hero-content { max-width: 1400px; margin: 0 auto; }
+        .hero-badge { display: inline-block; background: var(--highlight-orange); color: var(--white); padding: 0.5rem 1.2rem; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; border-radius: 4px; }
+        .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 0.5rem; color: var(--white); text-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        .hero-location { font-size: 1.2rem; opacity: 0.9; margin-bottom: 2rem; }
+        .hero-stats { display: flex; gap: 3rem; flex-wrap: wrap; }
+        .hero-stat { text-align: center; }
+        .hero-stat-value { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 600; }
+        .hero-stat-label { font-size: 0.9rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.05em; }
+        .slider-dots { position: absolute; bottom: 2rem; right: 2rem; display: flex; gap: 0.5rem; z-index: 10; }
+        .slider-dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.4); border: 2px solid rgba(255,255,255,0.6); cursor: pointer; transition: var(--transition); }
+        .slider-dot.active { background: var(--accent); border-color: var(--accent); }
+        section { padding: 5rem 2rem; }
+        .section-container { max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-header h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); color: var(--primary); margin-bottom: 0.5rem; }
+        .section-header .accent-line { width: 60px; height: 3px; background: var(--accent); margin: 1rem auto 0; }
+        .features { background: var(--white); }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .feature-card { padding: 2rem; background: var(--cream); border-radius: 4px; text-align: center; transition: var(--transition); }
+        .feature-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+        .feature-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .feature-card h3 { font-size: 1.2rem; color: var(--primary); margin-bottom: 0.5rem; }
+        .feature-card p { color: var(--text-light); font-size: 0.95rem; }
+        .gallery { background: var(--cream-dark); }
+        .gallery-tabs { display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        .gallery-tab { padding: 0.6rem 1.5rem; background: transparent; border: 2px solid var(--primary); color: var(--primary); font-family: 'Source Sans 3', sans-serif; font-size: 0.95rem; font-weight: 500; cursor: pointer; transition: var(--transition); border-radius: 2px; }
+        .gallery-tab:hover, .gallery-tab.active { background: var(--primary); color: var(--white); }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+        .gallery-item { position: relative; aspect-ratio: 4/3; overflow: hidden; border-radius: 4px; cursor: pointer; box-shadow: var(--shadow); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .gallery-item:hover img { transform: scale(1.08); }
+        .gallery-item-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%); opacity: 0; transition: var(--transition); display: flex; align-items: flex-end; padding: 1rem; }
+        .gallery-item:hover .gallery-item-overlay { opacity: 1; }
+        .gallery-item-label { color: var(--white); font-weight: 500; }
+        .gallery-item.hidden { display: none; }
+        .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 2rem; }
+        .lightbox.active { display: flex; }
+        .lightbox-content { position: relative; max-width: 90%; max-height: 90%; }
+        .lightbox-content img { max-width: 100%; max-height: 85vh; object-fit: contain; }
+        .lightbox-close { position: absolute; top: -40px; right: 0; background: none; border: none; color: var(--white); font-size: 2rem; cursor: pointer; opacity: 0.8; transition: var(--transition); }
+        .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); border: none; color: var(--white); font-size: 2rem; width: 50px; height: 50px; cursor: pointer; transition: var(--transition); border-radius: 50%; }
+        .lightbox-prev { left: -80px; }
+        .lightbox-next { right: -80px; }
+        .lightbox-caption { color: var(--white); text-align: center; margin-top: 1rem; font-size: 1.1rem; }
+
+        /* ── NEUE SEKTION: Wohnungsbeschreibung ── */
+        .description { background: var(--white); }
+        .description-inner { max-width: 860px; margin: 0 auto; }
+        .description-body { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 3rem; }
+        .desc-block { padding: 1.4rem 1.6rem; background: var(--cream); border-left: 3px solid var(--accent); border-radius: 0 4px 4px 0; }
+        .desc-block.full { grid-column: 1 / -1; }
+        .desc-block p { color: var(--text); font-size: 1rem; line-height: 1.75; }
+        .desc-intro { font-size: 1.1rem; line-height: 1.8; color: var(--text); margin-bottom: 2.5rem; text-align: center; }
+        @media (max-width: 700px) { .description-body { grid-template-columns: 1fr; } .desc-block.full { grid-column: 1; } }
+        /* ───────────────────────────────────── */
+
+        .details { background: var(--cream-dark); }
+        .details-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem; }
+        .details-table { width: 100%; }
+        .details-table h3 { font-size: 1.3rem; color: var(--primary); margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent); }
+        .details-row { display: flex; justify-content: space-between; padding: 0.8rem 0; border-bottom: 1px solid var(--cream-dark); }
+        .details-label { color: var(--text-light); }
+        .details-value { font-weight: 500; color: var(--primary); }
+        .floorplan-container { margin-top: 3rem; text-align: center; }
+        .floorplan-wrapper { max-width: 600px; margin: 0 auto; background: var(--white); padding: 1.5rem; border-radius: 4px; box-shadow: var(--shadow); cursor: pointer; transition: var(--transition); }
+        .floorplan-wrapper:hover { transform: scale(1.02); box-shadow: var(--shadow-lg); }
+        .floorplan-wrapper img { width: 100%; height: auto; border-radius: 2px; }
+        .floorplan-caption { margin-top: 1rem; color: var(--text-light); font-style: italic; }
+        .location { background: var(--cream-dark); }
+        .location-content { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        .location-map { aspect-ratio: 16/10; border-radius: 4px; overflow: hidden; box-shadow: var(--shadow-lg); }
+        .location-map iframe { width: 100%; height: 100%; border: none; }
+        .location-info h3 { font-size: 1.5rem; color: var(--primary); margin-bottom: 1.5rem; }
+        .location-highlights { list-style: none; }
+        .location-highlights li { padding: 0.8rem 0; padding-left: 2rem; position: relative; border-bottom: 1px solid rgba(0,0,0,0.08); }
+        .location-highlights li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
+        .price-section { background: var(--primary); color: var(--white); text-align: center; }
+        .price-card { display: inline-block; background: rgba(255,255,255,0.1); padding: 3rem 4rem; border-radius: 4px; margin-top: 2rem; }
+        .price-main { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 600; color: var(--accent); }
+        .price-sub { font-size: 1.1rem; opacity: 0.9; margin-top: 0.5rem; }
+        .price-breakdown { display: flex; justify-content: center; gap: 3rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.2); }
+        .contact { background: var(--white); }
+        .contact-content { text-align: center; max-width: 600px; margin: 0 auto; }
+        .contact-btn { display: inline-block; background: var(--highlight-orange); color: var(--white); padding: 1.5rem 5rem; font-size: 1.8rem; font-weight: 800; text-decoration: none; border-radius: 4px; transition: var(--transition); margin: 3rem 0; box-shadow: 0 4px 15px rgba(230,126,34,0.4); text-transform: uppercase; }
+        .contact-btn:hover { background: #d35400; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(230,126,34,0.5); }
+        .contact-info { margin-top: 1rem; font-size: 1.1rem; color: var(--primary); line-height: 1.4; }
+        .contact-qr { margin-bottom: 2rem; }
+        .contact-qr img { width: 180px; height: 180px; border: 1px solid var(--cream-dark); padding: 10px; border-radius: 4px; }
+        footer { background: var(--primary); color: rgba(255,255,255,0.7); text-align: center; padding: 2rem; font-size: 0.9rem; }
+        @media (max-width: 900px) { .nav-links { display: none; } .location-content { grid-template-columns: 1fr; } .hero-stats { gap: 1.5rem; } .price-breakdown { flex-direction: column; gap: 1.5rem; } .lightbox-nav { display: none; } }
+        @media (max-width: 600px) { section { padding: 3rem 1.5rem; } .hero-overlay { padding: 2rem 1.5rem; } .price-card { padding: 2rem; width: 100%; } .contact-btn { padding: 1rem 3rem; font-size: 1.2rem; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Unterföhring</div>
+            <div class="header-status">Frei ab 1. Mai 2026</div>
+            <ul class="nav-links">
+                <li><a href="#features">Ausstattung</a></li>
+                <li><a href="#gallery">Galerie</a></li>
+                <li><a href="#description">Beschreibung</a></li>
+                <li><a href="#details">Details</a></li>
+                <li><a href="#location">Lage</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-slider">
+            <div class="hero-slide active"><img src="EssWohnbereich.png" alt="Heller Wohnbereich"></div>
+            <div class="hero-slide"><img src="Schlafzimmer.png" alt="Schlafzimmer"></div>
+            <div class="hero-slide"><img src="Blick_vom_Flur.png" alt="Blick durch die Wohnung"></div>
+            <div class="hero-slide"><img src="Ansicht_Küche.png" alt="Moderne Einbauküche"></div>
+            <div class="hero-slide"><img src="anzeige_Balkon4.jpg" alt="Sonniger Südbalkon"></div>
+            <div class="hero-slide"><img src="anzeige_Aufzug2.jpg" alt="Barrierefreier Zugang"></div>
+        </div>
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <span class="hero-badge">Frei ab 01. Mai 2026</span>
+                <h1>Elegante 2-Zimmer-Wohnung</h1>
+                <p class="hero-location">Brunnbachlweg 13, 85774 Unterföhring bei München</p>
+                <div class="hero-stats">
+                    <div class="hero-stat"><div class="hero-stat-value">57 m²</div><div class="hero-stat-label">Wohnfläche</div></div>
+                    <div class="hero-stat"><div class="hero-stat-value">€1.450</div><div class="hero-stat-label">Netto-Kaltmiete</div></div>
+                    <div class="hero-stat"><div class="hero-stat-value">€85</div><div class="hero-stat-label">TG-Stellplatz</div></div>
+                    <div class="hero-stat"><div class="hero-stat-value">€210</div><div class="hero-stat-label">Betriebskosten-VZ</div></div>
+                </div>
+            </div>
+        </div>
+        <div class="slider-dots">
+            <div class="slider-dot active" data-index="0"></div>
+            <div class="slider-dot" data-index="1"></div>
+            <div class="slider-dot" data-index="2"></div>
+            <div class="slider-dot" data-index="3"></div>
+            <div class="slider-dot" data-index="4"></div>
+            <div class="slider-dot" data-index="5"></div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="section-container">
+            <div class="section-header"><h2>Ausstattung & Highlights</h2><div class="accent-line"></div></div>
+            <div class="features-grid">
+                <div class="feature-card"><div class="feature-icon">☀️</div><h3>Südbalkon</h3><p>Sonniger Balkon mit Blick ins Grüne (begehbar von Wohn- und Schlafzimmer)</p></div>
+                <div class="feature-card"><div class="feature-icon">🍳</div><h3>Einbauküche</h3><p>Hochwertige U-Küche mit Kühl/Gefrierkombination, Cerankochfeld, Dunstabzug und Geschirrspüler</p></div>
+                <div class="feature-card"><div class="feature-icon">🚭</div><h3>Zustand</h3><p>Gepflegte Nichtraucher-Wohnung, frisch gestrichen und neuwertig</p></div>
+                <div class="feature-card"><div class="feature-icon">🚗</div><h3>Einzelstellplatz</h3><p>Einzel-TG-Stellplatz (kein Duplex) mit Reifenlagerung möglich</p></div>
+                <div class="feature-card"><div class="feature-icon">🌡️</div><h3>Fußbodenheizung</h3><p>Überall Fußbodenheizung (Fernwärme) & Handtuchheizkörper im Bad</p></div>
+                <div class="feature-card"><div class="feature-icon">🛗</div><h3>Aufzug</h3><p>Bequemer Zugang auf alle Etagen, inkl. Fahrradkeller und Wasch-/Trockenraum</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <div class="section-container">
+            <div class="section-header"><h2>Bildergalerie</h2><div class="accent-line"></div></div>
+            <div class="gallery-tabs">
+                <button class="gallery-tab active" data-filter="all">Alle</button>
+                <button class="gallery-tab" data-filter="wohnbereich">Wohnen & Küche</button>
+                <button class="gallery-tab" data-filter="schlafzimmer">Schlafzimmer</button>
+                <button class="gallery-tab" data-filter="bad">Badezimmer</button>
+                <button class="gallery-tab" data-filter="balkon">Balkon</button>
+                <button class="gallery-tab" data-filter="gebaeude">Gebäude & Extras</button>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="wohnbereich" data-caption="Großzügiger Wohn-Essbereich"><img src="EssWohnbereich.png" alt="Wohnzimmer"><div class="gallery-item-overlay"><span class="gallery-item-label">Wohnzimmer</span></div></div>
+                <div class="gallery-item" data-category="wohnbereich" data-caption="Moderne Einbauküche mit Vollausstattung"><img src="Ansicht_Küche.png" alt="Küche"><div class="gallery-item-overlay"><span class="gallery-item-label">Küche</span></div></div>
+                <div class="gallery-item" data-category="wohnbereich" data-caption="Detailansicht der Küchenzeile"><img src="Brunnbachlweg_13_03.png" alt="Küche Detail"><div class="gallery-item-overlay"><span class="gallery-item-label">Küchen-Details</span></div></div>
+                <div class="gallery-item" data-category="wohnbereich" data-caption="Heller Flurbereich"><img src="Flur.png" alt="Flur"><div class="gallery-item-overlay"><span class="gallery-item-label">Flur</span></div></div>
+                <div class="gallery-item" data-category="wohnbereich" data-caption="Blick durch die helle Wohnung"><img src="Blick_vom_Flur.png" alt="Durchblick"><div class="gallery-item-overlay"><span class="gallery-item-label">Grundriss-Einblick</span></div></div>
+                <div class="gallery-item" data-category="schlafzimmer" data-caption="Helles Schlafzimmer"><img src="Schlafzimmer.png" alt="Schlafzimmer"><div class="gallery-item-overlay"><span class="gallery-item-label">Schlafzimmer</span></div></div>
+                <div class="gallery-item" data-category="schlafzimmer" data-caption="Schlafzimmer mit Balkonanschluss"><img src="Schlafzimmer_mit Zugang_zum_Balkon.png" alt="Schlafzimmer Balkon"><div class="gallery-item-overlay"><span class="gallery-item-label">Schlafzimmer (Balkon)</span></div></div>
+                <div class="gallery-item" data-category="schlafzimmer" data-caption="Schlafzimmer unmöbliert"><img src="anzeige_Schlafzimmer1.jpg" alt="Schlafzimmer leer"><div class="gallery-item-overlay"><span class="gallery-item-label">Schlafzimmer</span></div></div>
+                <div class="gallery-item" data-category="bad" data-caption="Modernes Bad mit Waschmaschinenanschluss"><img src="Badezimmer.png" alt="Bad"><div class="gallery-item-overlay"><span class="gallery-item-label">Badezimmer</span></div></div>
+                <div class="gallery-item" data-category="bad" data-caption="Badezimmer Ansicht mit Badewanne"><img src="Badezimmer_Ansicht_2.png" alt="Badewanne"><div class="gallery-item-overlay"><span class="gallery-item-label">Badewanne</span></div></div>
+                <div class="gallery-item" data-category="bad" data-caption="Blick ins Badezimmer"><img src="Blick_ins_bad.png" alt="Blick Bad"><div class="gallery-item-overlay"><span class="gallery-item-label">Bad-Ansicht</span></div></div>
+                <div class="gallery-item" data-category="balkon" data-caption="Sonniger Südbalkon"><img src="anzeige_Balkon4.jpg" alt="Balkon"><div class="gallery-item-overlay"><span class="gallery-item-label">Balkon-Ausblick</span></div></div>
+                <div class="gallery-item" data-category="balkon" data-caption="Ruhiger Blick in die Anlage"><img src="anzeige_Balkon5.jpg" alt="Balkon Sicht"><div class="gallery-item-overlay"><span class="gallery-item-label">Aussicht</span></div></div>
+                <div class="gallery-item" data-category="balkon" data-caption="Zugang zum Südbalkon"><img src="Zugang_zum_Balkon.png" alt="Balkon Zugang"><div class="gallery-item-overlay"><span class="gallery-item-label">Balkon Zugang</span></div></div>
+                <div class="gallery-item" data-category="gebaeude" data-caption="Gepflegte Außenansicht"><img src="Brunnbachlweg_13_30.jpg" alt="Gebäude"><div class="gallery-item-overlay"><span class="gallery-item-label">Außenansicht</span></div></div>
+                <div class="gallery-item" data-category="gebaeude" data-caption="Wohnanlage Außenansicht"><img src="update_anzeige_P1050474.jpg" alt="Haus"><div class="gallery-item-overlay"><span class="gallery-item-label">Wohnanlage</span></div></div>
+                <div class="gallery-item" data-category="gebaeude" data-caption="Grüne Wohnanlage"><img src="IMG_7715.jpg" alt="Garten"><div class="gallery-item-overlay"><span class="gallery-item-label">Garten/Lage</span></div></div>
+                <div class="gallery-item" data-category="gebaeude" data-caption="TG-Einzelstellplatz"><img src="update_anzeige_Stellplatz2.jpg" alt="TG Stellplatz"><div class="gallery-item-overlay"><span class="gallery-item-label">Stellplatz</span></div></div>
+                <div class="gallery-item" data-category="gebaeude" data-caption="Moderner Personenaufzug"><img src="anzeige_Aufzug2.jpg" alt="Lift"><div class="gallery-item-overlay"><span class="gallery-item-label">Aufzug</span></div></div>
+                <div class="gallery-item" data-category="gebaeude" data-caption="Sicherer Fahrradkeller"><img src="anzeige_Fahrradkeller2.jpg" alt="Fahrrad"><div class="gallery-item-overlay"><span class="gallery-item-label">Fahrradkeller</span></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── NEUE SEKTION: Wohnungsbeschreibung ── -->
+    <section class="description" id="description">
+        <div class="section-container">
+            <div class="section-header"><h2>Wohnungsbeschreibung</h2><div class="accent-line"></div></div>
+            <div class="description-inner">
+                <p class="desc-intro">Die hochwertig ausgestattete Wohnung mit Süd-Balkon befindet sich im 2. Obergeschoss in einem gepflegten Mehrfamilienhaus, Baujahr 2009, mit nur 8 Wohnparteien. Auf ca. 57 m² bietet die 2-Zimmer-Wohnung eine durchdachte Raumaufteilung.</p>
+                <div class="description-body">
+                    <div class="desc-block">
+                        <p>🚪 <strong>Diele</strong><br>Die einladende Diele mit direktem Zugang zu allen Zimmern bietet Raum für eine Garderobe und sorgt für einen übersichtlichen Grundriss.</p>
+                    </div>
+                    <div class="desc-block">
+                        <p>🛋️ <strong>Wohn- & Essbereich</strong><br>Das Herzstück der Wohnung: ein großzügiger offener Wohn- und Essbereich mit einer modernen, hochwertigen Einbauküche. Bodentiefe Fenster mit Rollläden sorgen für ausgezeichnete Lichtverhältnisse.</p>
+                    </div>
+                    <div class="desc-block">
+                        <p>🛏️ <strong>Schlafzimmer</strong><br>Sehr geräumig mit mehr als ausreichend Platz für einen großen Kleiderschrank sowie ein Doppelbett – und direktem Zugang zum Südbalkon.</p>
+                    </div>
+                    <div class="desc-block">
+                        <p>☀️ <strong>Süd-Balkon</strong><br>Ein besonderes Highlight: der große Südbalkon ist sowohl vom Wohnzimmer als auch vom Schlafzimmer aus zugänglich und bietet den ganzen Tag Sonnenlicht.</p>
+                    </div>
+                    <div class="desc-block">
+                        <p>🛁 <strong>Badezimmer</strong><br>Gepflegt, raumhoch gefliest und hell in modernem Design – mit Badewanne, Waschmaschinenanschluss und Handtuchtrockner.</p>
+                    </div>
+                    <div class="desc-block">
+                        <p>🅿️ <strong>Weiteres Zubehör</strong><br>Tiefgaragenstellplatz, Kellerabteil mit eigenem Stromanschluss sowie ein gemeinschaftlich genutzter Fahrradkeller runden das Angebot ab.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ────────────────────────────────────── -->
+
+    <section class="details" id="details">
+        <div class="section-container">
+            <div class="section-header"><h2>Objektdetails</h2><div class="accent-line"></div></div>
+            <div class="details-grid">
+                <div class="details-table">
+                    <h3>Allgemeine Informationen</h3>
+                    <div class="details-row"><span class="details-label">Wohnfläche / Nutzfläche</span><span class="details-value">ca. 57 m² / 61 m²</span></div>
+                    <div class="details-row"><span class="details-label">Zimmer</span><span class="details-value">2</span></div>
+                    <div class="details-row"><span class="details-label">Etage / Raumhöhe</span><span class="details-value">2. OG / 2,49 m</span></div>
+                    <div class="details-row"><span class="details-label">Baujahr / Zustand</span><span class="details-value">2009 / sehr gepflegt</span></div>
+                    <div class="details-row"><span class="details-label">Verfügbar ab</span><span class="details-value">01.05.2026</span></div>
+                    <div class="details-row"><span class="details-label">Objekttyp</span><span class="details-value">Etagenwohnung</span></div>
+                </div>
+                <div class="details-table">
+                    <h3>Ausstattung & Technik</h3>
+                    <div class="details-row"><span class="details-label">Heizung</span><span class="details-value">Fußbodenhzg., Handtuchhzg. (Fernwärme)</span></div>
+                    <div class="details-row"><span class="details-label">Bodenbelag</span><span class="details-value">Echtholzparkett, Fliesen (Bad)</span></div>
+                    <div class="details-row"><span class="details-label">DSL-Anschluss</span><span class="details-value">bis 50 Mbit/s (Wohn-/Schlafzimmer)</span></div>
+                    <div class="details-row"><span class="details-label">Stellplatz</span><span class="details-value">Einzel-TG-Stellplatz (Kein Duplex)</span></div>
+                    <div class="details-row"><span class="details-label">Keller</span><span class="details-value">Abteil mit eigenem Stromanschluss</span></div>
+                    <div class="details-row"><span class="details-label">Sonstiges</span><span class="details-value">Nichtraucher, Fahrradkeller, Aufzug</span></div>
+                </div>
+            </div>
+            <div class="floorplan-container">
+                <h3>Grundriss</h3>
+                <div class="floorplan-wrapper gallery-item" data-caption="Durchdachter Grundriss der 2-Zimmer-Wohnung">
+                    <img src="Grundriss.jpg" alt="Grundriss">
+                </div>
+                <p class="floorplan-caption">Zum Vergrößern auf den Grundriss klicken</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="location" id="location">
+        <div class="section-container">
+            <div class="section-header"><h2>Lage & Umgebung</h2><div class="accent-line"></div></div>
+            <div class="location-content">
+                <div class="location-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2660.1234567890!2d11.6441234567890!3d48.1881234567890!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479e74fc8320490f%3A0xc4780a4f5f5f5f5f!2sBrunnbachlweg%2013%2C%2085774%20Unterf%C3%B6hring!5e0!3m2!1sde!2sde!4v1234567890123" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <div class="location-info">
+                    <h3>Unterföhring – Perfekte Infrastruktur</h3>
+                    <ul class="location-highlights">
+                        <li>10 Min. Fußweg zur S-Bahn (S8) & Allianz-Campus</li>
+                        <li>Nächste Bushaltestelle (232, 188) in ca. 3 Min. Fußweg</li>
+                        <li>Englischer Garten (Aumeister) oder Feringasee ca. 10 Min. mit dem Rad</li>
+                        <li>Münchner Flughafen oder Hauptbahnhof in ca. 30 Min. via S8</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="price-section">
+        <div class="section-container">
+            <div class="section-header"><h2>Mietkonditionen</h2><div class="accent-line"></div></div>
+            <div class="price-card">
+                <div class="price-main">€1.745</div>
+                <div class="price-sub">monatliche Warmmiete</div>
+                <div class="price-breakdown">
+                    <div class="price-item"><div class="price-item-value">€1.450</div><div class="price-item-label">Netto-Kaltmiete</div></div>
+                    <div class="price-item"><div class="price-item-value">€85</div><div class="price-item-label">TG-Stellplatz</div></div>
+                    <div class="price-item"><div class="price-item-value">€210</div><div class="price-item-label">Betriebskostenvorauszahlung</div></div>
+                </div>
+                <div style="margin-top: 1.5rem; font-size: 1.2rem; opacity: 0.9;">Kaution: €4.500</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="section-container">
+            <div class="section-header"><h2>Interesse?</h2><div class="accent-line"></div></div>
+            <div class="contact-content">
+                <p>Du hast Fragen zur Wohnung? Melde dich einfach – dann erzähle ich dir mehr!</p>
+                <a href="mailto:tschmid@gmx.com?subject=Anfrage%3A%20Wohnung%20Unterf%C3%B6hring" class="contact-btn">Kontakt aufnehmen</a>
+                <div class="contact-qr"><img src="qr-wohnung-brunnbachlweg.png" alt="QR Code zur Wohnung"></div>
+                <div class="contact-info"><strong>Thomas Schmid</strong><br><a href="mailto:tschmid@gmx.com" style="color: var(--primary); text-decoration: none;">tschmid@gmx.com</a></div>
+            </div>
+        </div>
+    </section>
+
+    <footer><p>© 2026 Brunnbachlweg 13, Unterföhring – Privates Mietangebot</p></footer>
+
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox()">×</button>
+            <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)">❮</button>
+            <img id="lightbox-img" src="">
+            <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">❯</button>
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.hero-slide'), dots = document.querySelectorAll('.slider-dot');
+        let currentSlide = 0;
+        function showSlide(idx) {
+            slides.forEach(s => s.classList.remove('active')); dots.forEach(d => d.classList.remove('active'));
+            currentSlide = (idx + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active'); dots[currentSlide].classList.add('active');
+        }
+        setInterval(() => showSlide(currentSlide + 1), 5000);
+        dots.forEach((dot, i) => dot.addEventListener('click', () => showSlide(i)));
+
+        const tabs = document.querySelectorAll('.gallery-tab'), items = document.querySelectorAll('.gallery-item');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const filter = tab.dataset.filter;
+                tabs.forEach(t => t.classList.remove('active')); tab.classList.add('active');
+                items.forEach(item => { (filter === 'all' || item.dataset.category === filter) ? item.classList.remove('hidden') : item.classList.add('hidden'); });
+            });
+        });
+
+        const lightbox = document.getElementById('lightbox'), lightboxImg = document.getElementById('lightbox-img'), lightboxCaption = document.getElementById('lightbox-caption');
+        let currentLightboxIndex = 0, visibleItems = [];
+        function initLightbox() {
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    visibleItems = Array.from(document.querySelectorAll('.gallery-item')).filter(i => !i.classList.contains('hidden'));
+                    currentLightboxIndex = visibleItems.indexOf(item);
+                    openLightbox();
+                });
+            });
+        }
+        function openLightbox() {
+            const item = visibleItems[currentLightboxIndex];
+            lightboxImg.src = item.querySelector('img').src;
+            lightboxCaption.textContent = item.dataset.caption || '';
+            lightbox.classList.add('active');
+        }
+        function closeLightbox() { lightbox.classList.remove('active'); }
+        function navigateLightbox(d) { currentLightboxIndex = (currentLightboxIndex + d + visibleItems.length) % visibleItems.length; openLightbox(); }
+        initLightbox();
+    </script>
+</body>
+</html>
