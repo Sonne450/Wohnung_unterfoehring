@@ -131,6 +131,10 @@
         .contact-qr { margin-bottom: 2rem; }
         .contact-qr img { width: 180px; height: 180px; border: 1px solid var(--cream-dark); padding: 10px; border-radius: 4px; }
         footer { background: var(--primary); color: rgba(255,255,255,0.7); text-align: center; padding: 2rem; font-size: 0.9rem; }
+        footer a { color: rgba(255,255,255,0.7); text-decoration: none; transition: var(--transition); }
+        footer a:hover { color: var(--white); }
+        .footer-legal { margin-top: 0.5rem; font-size: 0.85rem; }
+        .footer-legal a { margin: 0 0.75rem; }
         @media (max-width: 900px) { .nav-links { display: none; } .location-content { grid-template-columns: 1fr; } .hero-stats { gap: 1.5rem; } .price-breakdown { flex-direction: column; gap: 1.5rem; } .lightbox-nav { display: none; } }
         @media (max-width: 600px) { section { padding: 3rem 1.5rem; } .hero-overlay { padding: 2rem 1.5rem; } .price-card { padding: 2rem; width: 100%; } .contact-btn { padding: 1rem 3rem; font-size: 1.2rem; } }
     </style>
@@ -150,8 +154,7 @@
             </ul>
         </nav>
     </header>
-<!-- test build -->
-    
+
     <section class="hero">
         <div class="hero-slider">
             <div class="hero-slide active"><img src="EssWohnbereich.png" alt="Heller Wohnbereich"></div>
@@ -159,7 +162,6 @@
             <div class="hero-slide"><img src="Blick_vom_Flur.png" alt="Blick durch die Wohnung"></div>
             <div class="hero-slide"><img src="Ansicht_Küche.png" alt="Moderne Einbauküche"></div>
             <div class="hero-slide"><img src="anzeige_Balkon4.jpg" alt="Sonniger Südbalkon"></div>
-            <div class="hero-slide"><img src="anzeige_Aufzug2.jpg" alt="Barrierefreier Zugang"></div>
         </div>
         <div class="hero-overlay">
             <div class="hero-content">
@@ -180,7 +182,6 @@
             <div class="slider-dot" data-index="2"></div>
             <div class="slider-dot" data-index="3"></div>
             <div class="slider-dot" data-index="4"></div>
-            <div class="slider-dot" data-index="5"></div>
         </div>
     </section>
 
@@ -189,7 +190,7 @@
             <div class="section-header"><h2>Ausstattung & Highlights</h2><div class="accent-line"></div></div>
             <div class="features-grid">
                 <div class="feature-card"><div class="feature-icon">☀️</div><h3>Südbalkon</h3><p>Sonniger Balkon mit Blick ins Grüne (begehbar von Wohn- und Schlafzimmer)</p></div>
-                <div class="feature-card"><div class="feature-icon">🍳</div><h3>Einbauküche</h3><p>Hochwertige U-Küche mit Kühl/Gefrierkombination, Cerankochfeld, Dunstabzug und Geschirrspüler</p></div>
+                <div class="feature-card"><div class="feature-icon">🍳</div><h3>Einbauküche</h3><p>Mit Kühl-/Gefrierkombination, Cerankochfeld, Dunstabzug und Geschirrspüler (kostenlose Nutzungsüberlassung; Instandhaltung durch Mieter)</p></div>
                 <div class="feature-card"><div class="feature-icon">🚭</div><h3>Zustand</h3><p>Gepflegte Nichtraucher-Wohnung, frisch gestrichen und neuwertig</p></div>
                 <div class="feature-card"><div class="feature-icon">🚗</div><h3>Einzelstellplatz</h3><p>Einzel-TG-Stellplatz (kein Duplex) mit Reifenlagerung möglich</p></div>
                 <div class="feature-card"><div class="feature-icon">🌡️</div><h3>Fußbodenheizung</h3><p>Überall Fußbodenheizung (Fernwärme) & Handtuchheizkörper im Bad</p></div>
@@ -234,7 +235,7 @@
         </div>
     </section>
 
-    <!-- ── NEUE SEKTION: Wohnungsbeschreibung ── -->
+    <!-- ── Wohnungsbeschreibung ── -->
     <section class="description" id="description">
         <div class="section-container">
             <div class="section-header"><h2>Wohnungsbeschreibung</h2><div class="accent-line"></div></div>
@@ -263,7 +264,6 @@
             </div>
         </div>
     </section>
-    <!-- ────────────────────────────────────── -->
 
     <section class="details" id="details">
         <div class="section-container">
@@ -346,7 +346,13 @@
         </div>
     </section>
 
-    <footer><p>© 2026 Brunnbachlweg 13, Unterföhring – Privates Mietangebot</p></footer>
+    <footer>
+        <p>© 2026 Brunnbachlweg 13, Unterföhring – Privates Mietangebot</p>
+        <p class="footer-legal">
+            <a href="impressum.html">Impressum</a>
+            <a href="datenschutz.html">Datenschutz</a>
+        </p>
+    </footer>
 
     <div class="lightbox" id="lightbox">
         <div class="lightbox-content">
