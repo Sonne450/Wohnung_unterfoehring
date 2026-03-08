@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressum | Wohnung Unterföhring</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --primary-light: #34495e;
+            --accent: #c9a962;
+            --accent-light: #d4b878;
+            --highlight-orange: #e67e22;
+            --cream: #f8f6f3;
+            --cream-dark: #f0ede8;
+            --text: #333;
+            --text-light: #666;
+            --white: #fff;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Source Sans 3', sans-serif; color: var(--text); background: var(--cream); line-height: 1.6; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 500; letter-spacing: -0.02em; }
+
+        header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); box-shadow: 0 1px 0 rgba(0,0,0,0.05); }
+        nav { max-width: 1400px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo a { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--primary); font-weight: 600; text-decoration: none; }
+        .back-link { color: var(--primary); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: var(--transition); }
+        .back-link:hover { color: var(--accent); }
+
+        .legal-content { max-width: 800px; margin: 0 auto; padding: 7rem 2rem 4rem; }
+        .legal-content h1 { font-size: 2.2rem; color: var(--primary); margin-bottom: 0.5rem; }
+        .accent-line { width: 60px; height: 3px; background: var(--accent); margin: 1rem 0 2.5rem; }
+        .legal-content h2 { font-size: 1.3rem; color: var(--primary); margin: 2rem 0 0.8rem; }
+        .legal-content p { margin-bottom: 1rem; color: var(--text); line-height: 1.8; }
+        .legal-content a { color: var(--primary); }
+
+        footer { background: var(--primary); color: rgba(255,255,255,0.7); text-align: center; padding: 2rem; font-size: 0.9rem; }
+        footer a { color: rgba(255,255,255,0.7); text-decoration: none; margin: 0 0.75rem; transition: var(--transition); }
+        footer a:hover { color: var(--white); }
+
+        @media (max-width: 600px) { .legal-content { padding: 6rem 1.5rem 3rem; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><a href="index.html">Unterföhring</a></div>
+            <a href="index.html" class="back-link">← Zurück zur Wohnung</a>
+        </nav>
+    </header>
+
+    <main class="legal-content">
+        <h1>Impressum</h1>
+        <div class="accent-line"></div>
+
+        <h2>Angaben gemäß § 5 DDG</h2>
+        <p>
+            Thomas Schmid<br>
+            Schellingstraße 137<br>
+            80798 München
+        </p>
+
+        <h2>Kontakt</h2>
+        <p>
+            Telefon: 089 / 307 057 50<br>
+            E-Mail: <a href="mailto:tschmid@gmx.com">tschmid@gmx.com</a>
+        </p>
+
+        <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+        <p>
+            Thomas Schmid<br>
+            Schellingstraße 137<br>
+            80798 München
+        </p>
+
+        <h2>Hinweis</h2>
+        <p>Dies ist ein rein privates Mietangebot für das Objekt im Brunnbachlweg 13, 85774 Unterföhring. Es handelt sich nicht um ein gewerbliches Angebot.</p>
+
+        <h2>Haftung für Inhalte</h2>
+        <p>Die Inhalte dieser Seite wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden.</p>
+
+        <h2>Haftung für Links</h2>
+        <p>Diese Website enthält Verlinkungen zu externen Websites Dritter (z.&nbsp;B. Google Maps). Auf deren Inhalte besteht kein Einfluss. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Einbindung auf mögliche Rechtsverstöße überprüft. Bei Bekanntwerden von Rechtsverletzungen werden solche Links umgehend entfernt.</p>
+    </main>
+
+    <footer>
+        <p>© 2026 Brunnbachlweg 13, Unterföhring – Privates Mietangebot</p>
+        <p style="margin-top: 0.5rem;">
+            <a href="impressum.html">Impressum</a>
+            <a href="datenschutz.html">Datenschutz</a>
+        </p>
+    </footer>
+</body>
+</html>
